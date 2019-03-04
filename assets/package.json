@@ -1,5 +1,8 @@
 {
     "scripts": {
         "build": "webpack --display-error-details"
+    },
+    "dependencies": {
+        "webpack": "^4.29.6"
     }
 }
