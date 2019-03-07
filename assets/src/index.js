@@ -10,11 +10,14 @@ import * as  Bootstrap from 'bootstrap-umi';
 import 'bootstrap-umi/dist/css/bootstrap.css';
 
 import Header from '../components/layouts/Header.vue'
+import Rouer from '../router/index'
+import { Router } from '@stimulus/core/dist/src/router';
 
 Vue.use(Bootstrap)
 
 const app = new Vue({
     el: ".app",
+    router: Router,
     components: {
         'nav-bar': Header
     }
