@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <array>
 
 const std::string load_assets(const std::string& path) {
 
@@ -27,9 +28,13 @@ int main() {
 
     std::string indexjs = load_assets("./assets/index.js");
 
-    svr.Get("/", [&](const httplib::Request& req, httplib::Response& res) {
-        res.set_content(body, "text/html");
-    });
+    std::array<std::string, 4> routes = { "/", "/about", "/contact", "/chat" };
+
+    for(auto&& r : routes) {
+        svr.Get(r.c_str(), [&](const httplib::Request& req, httplib::Response& res) {
+            res.set_content(body, "text/html");
+        });
+    }
 
     svr.Get("/index.js", [&](const httplib::Request& req, httplib::Response& res) {
         res.set_content(indexjs, "text/javascript");
