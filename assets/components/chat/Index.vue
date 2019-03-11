@@ -10,6 +10,9 @@
         <p>
             <button type="button" class="btn btn-primary" v-on:click="createChatRoom">Create</button>
         </p>
+        <div v-for="(room, key, index) in rooms" :key="index">
+            <router-link :to="{name: 'chatroom', params: {id: room.id}}">{{room.title}}</router-link>
+        </div>
     </div>    
 </template>
 
