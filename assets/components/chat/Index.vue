@@ -23,11 +23,11 @@ export default {
     },
     methods: {
         createChatRoom: function() {
-            this.title = "";
             this.rooms.lenght = 0;
             this.$store.state.database.ref('locussolus').push({
                 title: this.title,
             });
+            this.title = "";
         },
     }
 }
