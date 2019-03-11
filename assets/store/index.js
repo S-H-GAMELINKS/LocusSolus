@@ -5,12 +5,12 @@ import FireBase from 'firebase';
 Vue.use(Vuex);
 
 const firebase = FireBase.initializeApp({
-    apiKey: process.env.api_key,
-    authDomain: process.env.auth_domain,
-    databaseURL: process.env.database_url,
-    projectId: process.env.project_id,
-    storageBucket: process.env.storage_bucket,
-    messagingSenderId: process.env.message_senderid
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DB_URL,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGEING_SENDER_ID
 });
 
 const database = firebase.database();
