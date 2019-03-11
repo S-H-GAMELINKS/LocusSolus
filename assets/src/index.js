@@ -10,8 +10,7 @@ import * as  Bootstrap from 'bootstrap-umi';
 import 'bootstrap-umi/dist/css/bootstrap.css';
 
 import Header from '../components/layouts/Header.vue'
-import Rouer from '../router/index'
-import { Router } from '@stimulus/core/dist/src/router';
+import Router from '../router/index'
 
 Vue.use(Bootstrap)
 
