@@ -21,7 +21,24 @@ export default {
             title: "",
         }
     },
+    mounted: function() {
+        this.getChatRooms()
+    },
     methods: {
+        getChatRooms: function() {
+            const data = database.ref('locussolus');
+            data.on("value", (snapshot) => {
+                const locussolus = Object.entries(snapshot.val());
+                
+                this.rooms.length = 0;
+                for(var i = 0; i < locussolus.length; i++) {
+                    this.rooms.push({id: locussolus[i][0], title: locussolus[i][1].title});
+                }
+                console.log(this.rooms);
+            }, (errorObject) => {
+                console.log("The read failed: " + errorObject.code);
+            })
+        },
         createChatRoom: function() {
             this.rooms.lenght = 0;
             this.$store.state.database.ref('locussolus').push({
