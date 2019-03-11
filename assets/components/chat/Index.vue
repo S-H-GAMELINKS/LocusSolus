@@ -3,9 +3,9 @@
         <h1>All Chat Room</h1>
         <div class="input-group">
             <div class="input-group-append">
-                <span class="input-group-text">ルーム名</span>
+                <span class="input-group-text">Rooma Name</span>
             </div>
-            <input type="text" class="form-control" v-model="title" placeholder="ルーム名を入力してください"> 
+            <input type="text" class="form-control" v-model="title" placeholder="Input New Chat Room Name..."> 
         </div>
         <p>
             <button type="button" class="btn btn-primary" v-on:click="createChatRoom">Create</button>
