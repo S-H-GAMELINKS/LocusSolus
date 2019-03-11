@@ -30,19 +30,23 @@ int main() {
 
     std::array<std::string, 4> routes = { "/", "/about", "/contact", "/chat"};
 
+    std::array<std::string, 2> javascripts = { "/index.js", "/chat/index.js" };
+
     for(auto&& r : routes) {
         svr.Get(r.c_str(), [&](const httplib::Request& req, httplib::Response& res) {
             res.set_content(body, "text/html");
         });
     }
 
-    svr.Get(R"(/chat/([0-9a-f]{6}))", [&](const httplib::Request& req, httplib::Response& res) {
+    svr.Get("/chat/\\d+", [&](const httplib::Request& req, httplib::Response& res) {
         res.set_content(body, "text/html");
     });
 
-    svr.Get("/index.js", [&](const httplib::Request& req, httplib::Response& res) {
-        res.set_content(indexjs, "text/javascript");
-    });
+    for (auto&& j : javascripts){ 
+        svr.Get(j.c_str(), [&](const httplib::Request& req, httplib::Response& res) {
+            res.set_content(indexjs, "text/javascript");
+        });
+    }
 
     svr.listen("localhost", 3000);
 
