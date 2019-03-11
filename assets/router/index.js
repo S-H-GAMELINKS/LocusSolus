@@ -4,7 +4,7 @@ import Index from '../components/web/Index.vue'
 import About from '../components/web/About.vue'
 import Contact from '../components/web/Contact.vue'
 import ChatIndex from '../components/chat/Index.vue'
-import ChatRoom from '../components/chat/chat'
+import ChatRoom from '../components/chat/Chat.vue'
 
 Vue.use(VueRouter)
 
