@@ -28,13 +28,17 @@ int main() {
 
     std::string indexjs = load_assets("./assets/index.js");
 
-    std::array<std::string, 4> routes = { "/", "/about", "/contact", "/chat" };
+    std::array<std::string, 4> routes = { "/", "/about", "/contact", "/chat"};
 
     for(auto&& r : routes) {
         svr.Get(r.c_str(), [&](const httplib::Request& req, httplib::Response& res) {
             res.set_content(body, "text/html");
         });
     }
+
+    svr.Get(R"(/chat/([0-9a-f]{6}))", [&](const httplib::Request& req, httplib::Response& res) {
+        res.set_content(body, "text/html");
+    });
 
     svr.Get("/index.js", [&](const httplib::Request& req, httplib::Response& res) {
         res.set_content(indexjs, "text/javascript");
