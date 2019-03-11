@@ -14,7 +14,7 @@ export default new VueRouter({
     { path: '/', component: Index },
     { path: '/about', component: About },
     { path: '/contact', component: Contact },
-    { path: '/chat', component: ChatIndex }
+    { path: '/chat', component: ChatIndex },
     { path: '/chat/:id', component: ChatRoom, name: 'chatroom' }
   ],
 })
