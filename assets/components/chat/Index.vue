@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         getChatRooms: function() {
-            const data = database.ref('locussolus');
+            const data = this.$store.state.database.ref('locussolus');
             data.on("value", (snapshot) => {
                 const locussolus = Object.entries(snapshot.val());
                 
