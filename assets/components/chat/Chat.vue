@@ -39,10 +39,14 @@ export default {
             data.on("value", (snapshot) => {
                 const locussolus = Object.entries(snapshot.val());
                 console.log(locussolus);
-                this.title = locussolus[locussolus.length - 1][1];
                 this.talks.length = 0;
-                for(var i = 0; i < locussolus.length - 1; i++) {
-                    this.talks.push({content: locussolus[i][1].content});
+                for(var i = 0; i < locussolus.length; i++) {
+                    if (locussolus[i][1].title !== undefined) {
+                        this.title = locussolus[i][1].title
+                    }
+                    if (locussolus[i][1].content !== undefined) {
+                        this.talks.push({content: locussolus[i][1].content});
+                    }
                 }
                 this.talks.reverse();
                 console.log(this.talks);
