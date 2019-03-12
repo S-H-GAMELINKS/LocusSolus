@@ -43,8 +43,9 @@ export default {
             })
         },
         createChatRoom: function() {
-            this.rooms.lenght = 0;
-            this.$store.state.database.ref('locussolus').push({
+            const id = this.rooms.length;
+            this.rooms.length = 0;
+            this.$store.state.database.ref(`locussolus/${id}`).set({
                 title: this.title,
             });
             this.title = "";
