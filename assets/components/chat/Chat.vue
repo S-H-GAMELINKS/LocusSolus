@@ -1,68 +1,23 @@
 <template>
-<div>
-    <h1>{{title}}</h1>
-    <div class="input-group">
-        <div class="input-group-append">
-            <span class="input-group-text">Input your tlak</span>
-        </div>
-        <input type="text" class="form-control" v-model="content"> 
-    </div>
-    <p>
-        <button type="button" class="btn btn-primary" v-on:click="createTalk">Submit</button>
-    </p>
-    <div class="talk-box" v-for="(talk, key, index) in talks" :key="index">
-        <div class="talk-area">
-            <div class="talk" v-if='talk.content != ""'> 
-                {{talk.content}}
+    <div data-controller="chat">
+        <div data-target="chat.title"></div>
+        <div class="input-group">
+            <div class="input-group-append">
+                <span class="input-group-text">Input your tlak</span>
             </div>
+            <input type="text" class="form-control" data-target="chat.content"> 
+        </div>
+        <p>
+            <button type="button" class="btn btn-primary" data-action="click->chat#submit">Submit</button>
+        </p>
+        <div class="talk-box">
+            <div class="talk-area" data-target="chat.talks"></div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
 export default {
-    data: function() {
-        return {
-            title: "",
-            talks: [],
-            content: "",
-        }
-    },
-    mounted: function() {
-        this.getTalks();
-        this.userLogin();
-    },
-    methods: {
-        getTalks: function() {
-            const data = this.$store.state.database.ref('locussolus' + String(this.$route.path).replace(/\/chat/, ''));
-            data.on("value", (snapshot) => {
-                const locussolus = Object.entries(snapshot.val());
-                console.log(locussolus);
-                this.talks.length = 0;
-                for(var i = 0; i < locussolus.length; i++) {
-                    if (locussolus[i][1].title !== undefined) {
-                        this.title = locussolus[i][1].title
-                    }
-                    if (locussolus[i][1].content !== undefined) {
-                        this.talks.push({content: locussolus[i][1].content});
-                    }
-                }
-                this.talks.reverse();
-                console.log(this.talks);
-            }, (errorObject) => {
-                console.log("The read failed: " + errorObject.code);
-            })
-            console.log(this.talks)
-        },
-        createTalk: function() {
-            this.talks.length = 0;
-            this.$store.state.database.ref('locussolus' + String(this.$route.path).replace(/\/chat/, '')).push({
-                content: this.content,
-            });
-            this.content = "";
-        }
-    }
 }
 </script>
 

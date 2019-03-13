@@ -11,14 +11,12 @@ import 'bootstrap-umi/dist/css/bootstrap.css';
 
 import Header from '../components/layouts/Header.vue'
 import Router from '../router/index'
-import Store from '../store/index'
 
 Vue.use(Bootstrap)
 
 const app = new Vue({
     el: ".app",
     router: Router,
-    store: Store,
     components: {
         'nav-bar': Header
     }
