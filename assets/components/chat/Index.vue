@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import store from '../../store/index';
+
 export default {
     data: function() {
         return {
@@ -29,7 +31,7 @@ export default {
     },
     methods: {
         getChatRooms: function() {
-            const data = this.$store.state.database.ref('locussolus');
+            const data = store.state.database.ref('locussolus');
             data.on("value", (snapshot) => {
                 const locussolus = Object.entries(snapshot.val());
                 
@@ -45,7 +47,7 @@ export default {
         createChatRoom: function() {
             const id = this.rooms.length;
             this.rooms.length = 0;
-            this.$store.state.database.ref(`locussolus/${id}`).set({
+            store.state.database.ref(`locussolus/${id}`).set({
                 title: this.title,
             });
             this.title = "";
