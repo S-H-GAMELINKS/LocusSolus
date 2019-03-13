@@ -25,7 +25,7 @@ export default {
 .talk-box {
     width: 100%;
     height: auto;
-    overflow: hidden; /*floatの解除*/
+    overflow: hidden;
     margin-bottom: 20px;
 }
 
