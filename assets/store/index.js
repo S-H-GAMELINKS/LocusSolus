@@ -15,10 +15,27 @@ const firebase = FireBase.initializeApp({
 
 const database = firebase.database();
 
+const provider = new FireBase.auth.GithubAuthProvider();
+
 const store = new Vuex.Store({
     state: {
         firebase: firebase,
-        database: database
+        database: database,
+        id: "",
+        name: "",
+        session: false,
+        provider: provider
+    },
+    mutations: {
+        loginLocusSolus(state, id) {
+            state.id = String(id);
+        },
+        setUserName(state, name) {
+            state.name = String(name);
+        },
+        getSession(state, bool){
+            state.session = bool;
+        }
     }
 });
 
