@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 import FireBase from 'firebase';
 
 Vue.use(Vuex);
@@ -36,7 +37,26 @@ const store = new Vuex.Store({
         getSession(state, bool){
             state.session = bool;
         }
-    }
+    },
+    plugins: [ createPersistedState(
+        {
+            key: 'loginSession',
+            paths: ['session'],
+            storage: window.sessionStorage,
+        }),
+        createPersistedState(
+        {
+            key: 'loginId',
+            paths: ['id'],
+            storage: window.sessionStorage,
+        }),
+        createPersistedState(
+        {
+            key: 'loginName',
+            paths: ['name'],
+            storage: window.sessionStorage,
+        }
+    )]
 });
 
 export default store;
