@@ -1,5 +1,4 @@
 <template>
-import { functions } from 'firebase';
     <div class="container">
         <h1>Index Pagse</h1>
 
